@@ -1,0 +1,29 @@
+name: keepalive
+
+# Keeps the Supabase free project from pausing (pauses after ~1 week idle) and
+# warms the Vercel function. NOTE: GitHub disables scheduled workflows after 60
+# days of repo inactivity — this demo has a shelf life (documented in README).
+
+on:
+  schedule:
+    - cron: "0 6 */3 * *" # every 3 days at 06:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping the app health endpoint
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+        run: |
+          if [ -z "$APP_URL" ]; then
+            echo "APP_URL secret not set; skipping."
+            exit 0
+          fi
+          # Hits the API health route, which does a trivial Supabase read to
+          # keep the project active. The route returns 200 even when the DB is
+          # unreachable (db:false), so check the body — a dead DB fails the job.
+          body=$(curl -s --max-time 30 "$APP_URL/api/health")
+          echo "GET $APP_URL/api/health -> $body"
+          echo "$body" | grep -q '"db":true'

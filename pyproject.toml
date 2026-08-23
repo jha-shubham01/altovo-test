@@ -1,0 +1,14 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["frontend", ".venv", "verifyenv", "test-docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "BLE", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests may use assert and simple loops freely.
+"tests/*" = ["RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

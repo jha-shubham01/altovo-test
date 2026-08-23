@@ -1,0 +1,32 @@
+# --- Secrets (D17: developer owns .env; never committed) ---
+.env
+.env.*
+!.env.example
+
+# --- Node / Next.js ---
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# --- Vercel ---
+.vercel/
+
+# --- OS / editor ---
+.DS_Store
+*.swp
+.idea/
+.vscode/

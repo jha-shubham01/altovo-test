@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: #f5f3ed;
+  --surface: #ffffff;
+  --navy-900: #06152b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  background: var(--canvas);
+  color: var(--navy-900);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Decorative, fixed wash — very subtle single-hue blue blooms on the cream
+   canvas, just enough for depth (no multi-color "AI" gradient). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(48rem 40rem at 100% -10%, rgba(61, 111, 190, 0.07), transparent 60%),
+    radial-gradient(40rem 40rem at -8% 112%, rgba(61, 111, 190, 0.05), transparent 60%);
+}
+
+/* Focus ring uses the accent, visible on keyboard nav. */
+:focus-visible {
+  outline: 2px solid #3d6fbe;
+  outline-offset: 2px;
+}
+
+/* Subtle single-hue blue tonal for the wordmark / hero accents. */
+.gradient-text {
+  background: linear-gradient(135deg, #3d6fbe 0%, #335ea3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Frosted panel used by the nav bar and floating surfaces — warm white so it
+   blends with the cream canvas. */
+.glass {
+  background: rgba(249, 247, 242, 0.8);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+}
+
+/* Thin, unobtrusive scrollbars for the doc/chat panes. */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #c7d0dd transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #c7d0dd;
+  border-radius: 8px;
+}
