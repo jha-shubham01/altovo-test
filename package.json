@@ -1,0 +1,7 @@
+{
+  "name": "altovo-docqa",
+  "private": true,
+  "dependencies": {
+    "next": "15.1.3"
+  }
+}
