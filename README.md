@@ -133,5 +133,3 @@ For the keep-alive workflow, set the repo secret `APP_URL` to the production URL
 - Questions run across **all** uploaded documents (shared workspace).
 - Chat history is client-side and ephemeral; the last few turns are sent to
   generation only (retrieval stays single-query).
-
-What I'd build next is in [`PLAN.md`](PLAN.md) §7 and the design note.
