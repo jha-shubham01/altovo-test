@@ -9,6 +9,8 @@ select = ["E", "F", "W", "I", "UP", "B", "BLE", "RUF"]
 [tool.ruff.lint.per-file-ignores]
 # Tests may use assert and simple loops freely.
 "tests/*" = ["RUF"]
+# The entrypoint must extend sys.path before importing sibling modules (Vercel).
+"api/index.py" = ["E402"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

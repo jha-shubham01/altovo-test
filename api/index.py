@@ -8,6 +8,13 @@ function (D3). Every error is rendered as the single wire shape
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+# Vercel loads this file from the repo root (/var/task), where sibling modules
+# in api/ are not importable; local uvicorn runs from inside api/ and is unaffected.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import uuid
 
 import config
